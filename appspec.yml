@@ -1,1 +1,23 @@
-
+version: 0.0
+os: linux
+files:
+  - source: /dist.zip # Path to the artifact from CodeBuild
+    destination: /var/www/html/my-app # Destination on your EC2 instance
+permissions:
+  - object: /var/www/html/my-app
+    pattern: "**"
+    owner: ec2-user
+    group: ec2-user
+hooks:
+  BeforeInstall:
+    - location: scripts/install_dependencies.sh # Your script
+      timeout: 300
+      runas: ec2-user
+  AfterInstall:
+    - location: scripts/start_application.sh # Your script
+      timeout: 300
+      runas: ec2-user
+  ApplicationStop:
+    - location: scripts/stop_application.sh # Your script
+      timeout: 300
+      runas: ec2-user
