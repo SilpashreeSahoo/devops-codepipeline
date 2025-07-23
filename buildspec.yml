@@ -1,1 +1,26 @@
+version: 0.2
 
+phases:
+  install:
+    runtime-versions:
+      nodejs: 18
+    commands:
+      - echo "Installing dependencies..."
+      - npm install
+  build:
+    commands:
+      - echo "Building the application..."
+      - npm run build
+  post_build:
+    commands:
+      - echo "Build complete. Zipping artifacts."
+      - # Example: For a web app, zip the build output
+      - cd build # Or your build output directory
+      - zip -r ../dist.zip .
+      - cd ..
+artifacts:
+  files:
+    - 'dist.zip' # The artifact produced by CodeBuild
+    - 'appspec.yml' # If you are using CodeDeploy, include appspec.yml
+    - 'scripts/**/*' # If you have deployment scripts
+  discard-paths: yes # Do not include the full path in the zip
