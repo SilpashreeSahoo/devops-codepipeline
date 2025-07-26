@@ -1,0 +1,903 @@
+{
+  "version": 4,
+  "terraform_version": "1.8.5",
+  "serial": 53,
+  "lineage": "5ad2b40e-1ae5-071c-d7f8-1e1a58fc1dbc",
+  "outputs": {
+    "codebuild_project_name": {
+      "value": "devops-pipeline-project-build",
+      "type": "string"
+    },
+    "codepipeline_url": {
+      "value": "https://.console.aws.amazon.com/codesuite/codepipeline/pipelines/devops-pipeline-project-pipeline/view?region=",
+      "type": "string"
+    },
+    "s3_artifact_bucket_name": {
+      "value": "devops-codepipeline-artifacts-xumds51i",
+      "type": "string"
+    }
+  },
+  "resources": [
+    {
+      "mode": "data",
+      "type": "aws_caller_identity",
+      "name": "current",
+      "provider": "provider[\"registry.terraform.io/hashicorp/aws\"]",
+      "instances": [
+        {
+          "schema_version": 0,
+          "attributes": {
+            "account_id": "928096314836",
+            "arn": "arn:aws:iam::928096314836:user/terraform-user",
+            "id": "928096314836",
+            "user_id": "AIDA5QFWZ4XKAUBDO2JCG"
+          },
+          "sensitive_attributes": []
+        }
+      ]
+    },
+    {
+      "mode": "data",
+      "type": "aws_region",
+      "name": "current",
+      "provider": "provider[\"registry.terraform.io/hashicorp/aws\"]",
+      "instances": [
+        {
+          "schema_version": 0,
+          "attributes": {
+            "description": "Asia Pacific (Mumbai)",
+            "endpoint": "ec2.ap-south-1.amazonaws.com",
+            "id": "ap-south-1",
+            "name": "ap-south-1"
+          },
+          "sensitive_attributes": []
+        }
+      ]
+    },
+    {
+      "mode": "data",
+      "type": "aws_subnet",
+      "name": "selected",
+      "provider": "provider[\"registry.terraform.io/hashicorp/aws\"]",
+      "instances": [
+        {
+          "schema_version": 0,
+          "attributes": {
+            "arn": "arn:aws:ec2:ap-south-1:928096314836:subnet/subnet-00800be7cda9813b8",
+            "assign_ipv6_address_on_creation": false,
+            "availability_zone": "ap-south-1a",
+            "availability_zone_id": "aps1-az1",
+            "available_ip_address_count": 250,
+            "cidr_block": "10.0.1.0/24",
+            "customer_owned_ipv4_pool": "",
+            "default_for_az": false,
+            "enable_dns64": false,
+            "enable_lni_at_device_index": 0,
+            "enable_resource_name_dns_a_record_on_launch": false,
+            "enable_resource_name_dns_aaaa_record_on_launch": false,
+            "filter": null,
+            "id": "subnet-00800be7cda9813b8",
+            "ipv6_cidr_block": "",
+            "ipv6_cidr_block_association_id": "",
+            "ipv6_native": false,
+            "map_customer_owned_ip_on_launch": false,
+            "map_public_ip_on_launch": false,
+            "outpost_arn": "",
+            "owner_id": "928096314836",
+            "private_dns_hostname_type_on_launch": "ip-name",
+            "state": "available",
+            "tags": {
+              "Name": "public-subnet-1"
+            },
+            "timeouts": null,
+            "vpc_id": "vpc-0056d65477e4e13e3"
+          },
+          "sensitive_attributes": []
+        }
+      ]
+    },
+    {
+      "mode": "data",
+      "type": "aws_vpc",
+      "name": "selected",
+      "provider": "provider[\"registry.terraform.io/hashicorp/aws\"]",
+      "instances": [
+        {
+          "schema_version": 0,
+          "attributes": {
+            "arn": "arn:aws:ec2:ap-south-1:928096314836:vpc/vpc-0056d65477e4e13e3",
+            "cidr_block": "10.0.0.0/16",
+            "cidr_block_associations": [
+              {
+                "association_id": "vpc-cidr-assoc-0621f13f1acb1bd72",
+                "cidr_block": "10.0.0.0/16",
+                "state": "associated"
+              }
+            ],
+            "default": false,
+            "dhcp_options_id": "dopt-0c409ab32d0ab4e19",
+            "enable_dns_hostnames": false,
+            "enable_dns_support": true,
+            "enable_network_address_usage_metrics": false,
+            "filter": null,
+            "id": "vpc-0056d65477e4e13e3",
+            "instance_tenancy": "default",
+            "ipv6_association_id": "",
+            "ipv6_cidr_block": "",
+            "main_route_table_id": "rtb-07208089103e3ce06",
+            "owner_id": "928096314836",
+            "state": null,
+            "tags": {
+              "Name": "my-vpc"
+            },
+            "timeouts": null
+          },
+          "sensitive_attributes": []
+        }
+      ]
+    },
+    {
+      "mode": "managed",
+      "type": "aws_codebuild_project",
+      "name": "app_build",
+      "provider": "provider[\"registry.terraform.io/hashicorp/aws\"]",
+      "instances": [
+        {
+          "schema_version": 0,
+          "attributes": {
+            "arn": "arn:aws:codebuild:ap-south-1:928096314836:project/devops-pipeline-project-build",
+            "artifacts": [
+              {
+                "artifact_identifier": "",
+                "bucket_owner_access": "",
+                "encryption_disabled": false,
+                "location": "",
+                "name": "devops-pipeline-project-build",
+                "namespace_type": "",
+                "override_artifact_name": false,
+                "packaging": "NONE",
+                "path": "",
+                "type": "CODEPIPELINE"
+              }
+            ],
+            "badge_enabled": false,
+            "badge_url": "",
+            "build_batch_config": [],
+            "build_timeout": 5,
+            "cache": [
+              {
+                "location": "",
+                "modes": [],
+                "type": "NO_CACHE"
+              }
+            ],
+            "concurrent_build_limit": 0,
+            "description": "CodeBuild project for devops-pipeline-project",
+            "encryption_key": "arn:aws:kms:ap-south-1:928096314836:alias/aws/s3",
+            "environment": [
+              {
+                "certificate": "",
+                "compute_type": "BUILD_GENERAL1_SMALL",
+                "environment_variable": [],
+                "fleet": [],
+                "image": "aws/codebuild/standard:5.0",
+                "image_pull_credentials_type": "CODEBUILD",
+                "privileged_mode": false,
+                "registry_credential": [],
+                "type": "LINUX_CONTAINER"
+              }
+            ],
+            "file_system_locations": [],
+            "id": "devops-pipeline-project-build",
+            "logs_config": [
+              {
+                "cloudwatch_logs": [
+                  {
+                    "group_name": "",
+                    "status": "ENABLED",
+                    "stream_name": ""
+                  }
+                ],
+                "s3_logs": [
+                  {
+                    "bucket_owner_access": "",
+                    "encryption_disabled": false,
+                    "location": "",
+                    "status": "DISABLED"
+                  }
+                ]
+              }
+            ],
+            "name": "devops-pipeline-project-build",
+            "project_visibility": "PRIVATE",
+            "public_project_alias": "",
+            "queued_timeout": 480,
+            "resource_access_role": "",
+            "secondary_artifacts": [],
+            "secondary_source_version": [],
+            "secondary_sources": [],
+            "service_role": "arn:aws:iam::928096314836:role/devops-pipeline-project-codebuild-role",
+            "source": [
+              {
+                "auth": [],
+                "build_status_config": [],
+                "buildspec": "version: 0.2\r\nphases:\r\n  install:\r\n    runtime-versions:\r\n      nodejs: 18\r\n    commands:\r\n      - echo \"Installing dependencies...\"\r\n      - npm install\r\n  build:\r\n    commands:\r\n      - echo \"Building the application...\"\r\n      - npm run build\r\n  post_build:\r\n    commands:\r\n      - echo \"Build complete. Zipping artifacts.\"\r\n      - # Example: For a web app, zip the build output\r\n      - cd build # Or your build output directory\r\n      - zip -r ../dist.zip .\r\n      - cd ..\r\nartifacts:\r\n  files:\r\n    - 'dist.zip' # The artifact produced by CodeBuild\r\n    - 'appspec.yml' # If you are using CodeDeploy, include appspec.yml\r\n    - 'scripts/**/*' # If you have deployment scripts\r\n  discard-paths: yes # Do not include the full path in the zip",
+                "git_clone_depth": 0,
+                "git_submodules_config": [],
+                "insecure_ssl": false,
+                "location": "",
+                "report_build_status": false,
+                "type": "CODEPIPELINE"
+              }
+            ],
+            "source_version": "",
+            "tags": {
+              "ManagedBy": "Terraform",
+              "Project": "devops-pipeline-project"
+            },
+            "tags_all": {
+              "ManagedBy": "Terraform",
+              "Project": "devops-pipeline-project"
+            },
+            "vpc_config": []
+          },
+          "sensitive_attributes": [],
+          "private": "eyJzY2hlbWFfdmVyc2lvbiI6IjAifQ==",
+          "dependencies": [
+            "aws_iam_role.codebuild_role"
+          ]
+        }
+      ]
+    },
+    {
+      "mode": "managed",
+      "type": "aws_codedeploy_app",
+      "name": "app",
+      "provider": "provider[\"registry.terraform.io/hashicorp/aws\"]",
+      "instances": [
+        {
+          "schema_version": 0,
+          "attributes": {
+            "application_id": "fd2bb901-6399-4cf8-88bd-5b055eaf469c",
+            "arn": "arn:aws:codedeploy:ap-south-1:928096314836:application:MyWebApp",
+            "compute_platform": "Server",
+            "github_account_name": "",
+            "id": "fd2bb901-6399-4cf8-88bd-5b055eaf469c:MyWebApp",
+            "linked_to_github": false,
+            "name": "MyWebApp",
+            "tags": {},
+            "tags_all": {}
+          },
+          "sensitive_attributes": [],
+          "private": "eyJzY2hlbWFfdmVyc2lvbiI6IjAifQ=="
+        }
+      ]
+    },
+    {
+      "mode": "managed",
+      "type": "aws_iam_instance_profile",
+      "name": "codedeploy_ec2_instance_profile",
+      "provider": "provider[\"registry.terraform.io/hashicorp/aws\"]",
+      "instances": [
+        {
+          "schema_version": 0,
+          "attributes": {
+            "arn": "arn:aws:iam::928096314836:instance-profile/devops-pipeline-project-codedeploy-ec2-instance-profile",
+            "create_date": "2025-07-24T04:32:05Z",
+            "id": "devops-pipeline-project-codedeploy-ec2-instance-profile",
+            "name": "devops-pipeline-project-codedeploy-ec2-instance-profile",
+            "name_prefix": "",
+            "path": "/",
+            "role": "devops-pipeline-project-codedeploy-ec2-role",
+            "tags": {},
+            "tags_all": {},
+            "unique_id": "AIPA5QFWZ4XKC6ZLRGIYR"
+          },
+          "sensitive_attributes": [],
+          "private": "eyJzY2hlbWFfdmVyc2lvbiI6IjAifQ==",
+          "dependencies": [
+            "aws_iam_role.codedeploy_ec2_role"
+          ]
+        }
+      ]
+    },
+    {
+      "mode": "managed",
+      "type": "aws_iam_role",
+      "name": "codebuild_role",
+      "provider": "provider[\"registry.terraform.io/hashicorp/aws\"]",
+      "instances": [
+        {
+          "schema_version": 0,
+          "attributes": {
+            "arn": "arn:aws:iam::928096314836:role/devops-pipeline-project-codebuild-role",
+            "assume_role_policy": "{\"Statement\":[{\"Action\":\"sts:AssumeRole\",\"Effect\":\"Allow\",\"Principal\":{\"Service\":\"codebuild.amazonaws.com\"}}],\"Version\":\"2012-10-17\"}",
+            "create_date": "2025-07-24T04:32:04Z",
+            "description": "",
+            "force_detach_policies": false,
+            "id": "devops-pipeline-project-codebuild-role",
+            "inline_policy": [
+              {
+                "name": "devops-pipeline-project-codebuild-policy",
+                "policy": "{\"Version\":\"2012-10-17\",\"Statement\":[{\"Action\":[\"logs:CreateLogGroup\",\"logs:CreateLogStream\",\"logs:PutLogEvents\"],\"Effect\":\"Allow\",\"Resource\":\"arn:aws:logs:ap-south-1:928096314836:log-group:/aws/codebuild/devops-pipeline-project-build:*\"},{\"Action\":[\"s3:PutObject\",\"s3:GetObject\",\"s3:GetObjectVersion\",\"s3:GetBucketAcl\",\"s3:GetBucketLocation\"],\"Effect\":\"Allow\",\"Resource\":[\"arn:aws:s3:::devops-codepipeline-artifacts-xumds51i\",\"arn:aws:s3:::devops-codepipeline-artifacts-xumds51i/*\"]}]}"
+              }
+            ],
+            "managed_policy_arns": [],
+            "max_session_duration": 3600,
+            "name": "devops-pipeline-project-codebuild-role",
+            "name_prefix": "",
+            "path": "/",
+            "permissions_boundary": "",
+            "tags": {},
+            "tags_all": {},
+            "unique_id": "AROA5QFWZ4XKLBSV3J7J7"
+          },
+          "sensitive_attributes": [],
+          "private": "bnVsbA=="
+        }
+      ]
+    },
+    {
+      "mode": "managed",
+      "type": "aws_iam_role",
+      "name": "codedeploy_ec2_role",
+      "provider": "provider[\"registry.terraform.io/hashicorp/aws\"]",
+      "instances": [
+        {
+          "schema_version": 0,
+          "attributes": {
+            "arn": "arn:aws:iam::928096314836:role/devops-pipeline-project-codedeploy-ec2-role",
+            "assume_role_policy": "{\"Statement\":[{\"Action\":\"sts:AssumeRole\",\"Effect\":\"Allow\",\"Principal\":{\"Service\":\"ec2.amazonaws.com\"}}],\"Version\":\"2012-10-17\"}",
+            "create_date": "2025-07-24T04:32:04Z",
+            "description": "",
+            "force_detach_policies": false,
+            "id": "devops-pipeline-project-codedeploy-ec2-role",
+            "inline_policy": [],
+            "managed_policy_arns": [
+              "arn:aws:iam::aws:policy/service-role/AmazonEC2RoleforAWSCodeDeploy"
+            ],
+            "max_session_duration": 3600,
+            "name": "devops-pipeline-project-codedeploy-ec2-role",
+            "name_prefix": "",
+            "path": "/",
+            "permissions_boundary": "",
+            "tags": {},
+            "tags_all": {},
+            "unique_id": "AROA5QFWZ4XKMM4LFNDMD"
+          },
+          "sensitive_attributes": [],
+          "private": "eyJzY2hlbWFfdmVyc2lvbiI6IjAifQ=="
+        }
+      ]
+    },
+    {
+      "mode": "managed",
+      "type": "aws_iam_role",
+      "name": "codedeploy_service_role",
+      "provider": "provider[\"registry.terraform.io/hashicorp/aws\"]",
+      "instances": [
+        {
+          "schema_version": 0,
+          "attributes": {
+            "arn": "arn:aws:iam::928096314836:role/devops-pipeline-project-codedeploy-service-role",
+            "assume_role_policy": "{\"Statement\":[{\"Action\":\"sts:AssumeRole\",\"Effect\":\"Allow\",\"Principal\":{\"Service\":\"codedeploy.amazonaws.com\"}}],\"Version\":\"2012-10-17\"}",
+            "create_date": "2025-07-24T08:55:34Z",
+            "description": "",
+            "force_detach_policies": false,
+            "id": "devops-pipeline-project-codedeploy-service-role",
+            "inline_policy": [],
+            "managed_policy_arns": [
+              "arn:aws:iam::aws:policy/service-role/AWSCodeDeployRole"
+            ],
+            "max_session_duration": 3600,
+            "name": "devops-pipeline-project-codedeploy-service-role",
+            "name_prefix": "",
+            "path": "/",
+            "permissions_boundary": "",
+            "tags": {},
+            "tags_all": {},
+            "unique_id": "AROA5QFWZ4XKFKTOL3QPC"
+          },
+          "sensitive_attributes": [],
+          "private": "eyJzY2hlbWFfdmVyc2lvbiI6IjAifQ=="
+        }
+      ]
+    },
+    {
+      "mode": "managed",
+      "type": "aws_iam_role",
+      "name": "codepipeline_role",
+      "provider": "provider[\"registry.terraform.io/hashicorp/aws\"]",
+      "instances": [
+        {
+          "schema_version": 0,
+          "attributes": {
+            "arn": "arn:aws:iam::928096314836:role/devops-pipeline-project-codepipeline-role",
+            "assume_role_policy": "{\"Statement\":[{\"Action\":\"sts:AssumeRole\",\"Effect\":\"Allow\",\"Principal\":{\"Service\":\"codepipeline.amazonaws.com\"}}],\"Version\":\"2012-10-17\"}",
+            "create_date": "2025-07-24T04:32:04Z",
+            "description": "",
+            "force_detach_policies": false,
+            "id": "devops-pipeline-project-codepipeline-role",
+            "inline_policy": [
+              {
+                "name": "devops-pipeline-project-codepipeline-policy",
+                "policy": "{\"Version\":\"2012-10-17\",\"Statement\":[{\"Action\":[\"s3:GetObject\",\"s3:GetBucketVersioning\",\"s3:PutObjectAcl\",\"s3:PutObject\"],\"Effect\":\"Allow\",\"Resource\":[\"arn:aws:s3:::devops-codepipeline-artifacts-xumds51i\",\"arn:aws:s3:::devops-codepipeline-artifacts-xumds51i/*\"]},{\"Action\":[\"codebuild:StartBuild\",\"codebuild:BatchGetBuilds\"],\"Effect\":\"Allow\",\"Resource\":\"*\"},{\"Action\":[\"codedeploy:CreateDeployment\",\"codedeploy:GetApplication\",\"codedeploy:GetDeployment\",\"codedeploy:GetDeploymentConfig\",\"codedeploy:RegisterApplicationRevision\",\"codedeploy:RegisterApplication\"],\"Effect\":\"Allow\",\"Resource\":\"*\"},{\"Action\":\"codestar-connections:UseConnection\",\"Effect\":\"Allow\",\"Resource\":\"arn:aws:codestar-connections:ap-south-1:928096314836:connection/2e23edaa-5748-43a0-8275-7aeac3a44ecf\"}]}"
+              }
+            ],
+            "managed_policy_arns": [],
+            "max_session_duration": 3600,
+            "name": "devops-pipeline-project-codepipeline-role",
+            "name_prefix": "",
+            "path": "/",
+            "permissions_boundary": "",
+            "tags": {},
+            "tags_all": {},
+            "unique_id": "AROA5QFWZ4XKLS4IEVIAN"
+          },
+          "sensitive_attributes": [],
+          "private": "eyJzY2hlbWFfdmVyc2lvbiI6IjAifQ=="
+        }
+      ]
+    },
+    {
+      "mode": "managed",
+      "type": "aws_iam_role_policy",
+      "name": "codebuild_policy",
+      "provider": "provider[\"registry.terraform.io/hashicorp/aws\"]",
+      "instances": [
+        {
+          "schema_version": 0,
+          "attributes": {
+            "id": "devops-pipeline-project-codebuild-role:devops-pipeline-project-codebuild-policy",
+            "name": "devops-pipeline-project-codebuild-policy",
+            "name_prefix": "",
+            "policy": "{\"Version\":\"2012-10-17\",\"Statement\":[{\"Action\":[\"logs:CreateLogGroup\",\"logs:CreateLogStream\",\"logs:PutLogEvents\"],\"Effect\":\"Allow\",\"Resource\":\"arn:aws:logs:ap-south-1:928096314836:log-group:/aws/codebuild/devops-pipeline-project-build:*\"},{\"Action\":[\"s3:PutObject\",\"s3:GetObject\",\"s3:GetObjectVersion\",\"s3:GetBucketAcl\",\"s3:GetBucketLocation\"],\"Effect\":\"Allow\",\"Resource\":[\"arn:aws:s3:::devops-codepipeline-artifacts-xumds51i\",\"arn:aws:s3:::devops-codepipeline-artifacts-xumds51i/*\"]}]}",
+            "role": "devops-pipeline-project-codebuild-role"
+          },
+          "sensitive_attributes": [],
+          "private": "bnVsbA==",
+          "dependencies": [
+            "aws_codebuild_project.app_build",
+            "aws_iam_role.codebuild_role",
+            "aws_s3_bucket.codepipeline_artifacts",
+            "data.aws_caller_identity.current",
+            "data.aws_region.current",
+            "random_string.bucket_suffix"
+          ]
+        }
+      ]
+    },
+    {
+      "mode": "managed",
+      "type": "aws_iam_role_policy",
+      "name": "codepipeline_policy",
+      "provider": "provider[\"registry.terraform.io/hashicorp/aws\"]",
+      "instances": [
+        {
+          "schema_version": 0,
+          "attributes": {
+            "id": "devops-pipeline-project-codepipeline-role:devops-pipeline-project-codepipeline-policy",
+            "name": "devops-pipeline-project-codepipeline-policy",
+            "name_prefix": "",
+            "policy": "{\"Version\":\"2012-10-17\",\"Statement\":[{\"Action\":[\"s3:GetObject\",\"s3:GetBucketVersioning\",\"s3:PutObjectAcl\",\"s3:PutObject\"],\"Effect\":\"Allow\",\"Resource\":[\"arn:aws:s3:::devops-codepipeline-artifacts-xumds51i\",\"arn:aws:s3:::devops-codepipeline-artifacts-xumds51i/*\"]},{\"Action\":[\"codebuild:StartBuild\",\"codebuild:BatchGetBuilds\"],\"Effect\":\"Allow\",\"Resource\":\"*\"},{\"Action\":[\"codedeploy:CreateDeployment\",\"codedeploy:GetApplication\",\"codedeploy:GetDeployment\",\"codedeploy:GetDeploymentConfig\",\"codedeploy:RegisterApplicationRevision\",\"codedeploy:RegisterApplication\"],\"Effect\":\"Allow\",\"Resource\":\"*\"},{\"Action\":\"codestar-connections:UseConnection\",\"Effect\":\"Allow\",\"Resource\":\"arn:aws:codestar-connections:ap-south-1:928096314836:connection/2e23edaa-5748-43a0-8275-7aeac3a44ecf\"}]}",
+            "role": "devops-pipeline-project-codepipeline-role"
+          },
+          "sensitive_attributes": [],
+          "private": "bnVsbA==",
+          "dependencies": [
+            "aws_iam_role.codepipeline_role",
+            "aws_s3_bucket.codepipeline_artifacts",
+            "random_string.bucket_suffix"
+          ]
+        }
+      ]
+    },
+    {
+      "mode": "managed",
+      "type": "aws_iam_role_policy_attachment",
+      "name": "codedeploy_ec2_attachment",
+      "provider": "provider[\"registry.terraform.io/hashicorp/aws\"]",
+      "instances": [
+        {
+          "schema_version": 0,
+          "attributes": {
+            "id": "devops-pipeline-project-codedeploy-ec2-role-20250726030609557300000001",
+            "policy_arn": "arn:aws:iam::aws:policy/service-role/AmazonEC2RoleforAWSCodeDeploy",
+            "role": "devops-pipeline-project-codedeploy-ec2-role"
+          },
+          "sensitive_attributes": [],
+          "private": "bnVsbA==",
+          "dependencies": [
+            "aws_iam_role.codedeploy_ec2_role"
+          ]
+        }
+      ]
+    },
+    {
+      "mode": "managed",
+      "type": "aws_iam_role_policy_attachment",
+      "name": "codedeploy_service_attachment",
+      "provider": "provider[\"registry.terraform.io/hashicorp/aws\"]",
+      "instances": [
+        {
+          "schema_version": 0,
+          "attributes": {
+            "id": "devops-pipeline-project-codedeploy-service-role-20250726030609569300000002",
+            "policy_arn": "arn:aws:iam::aws:policy/service-role/AWSCodeDeployRole",
+            "role": "devops-pipeline-project-codedeploy-service-role"
+          },
+          "sensitive_attributes": [],
+          "private": "bnVsbA==",
+          "dependencies": [
+            "aws_iam_role.codedeploy_service_role"
+          ]
+        }
+      ]
+    },
+    {
+      "mode": "managed",
+      "type": "aws_instance",
+      "name": "app_server",
+      "provider": "provider[\"registry.terraform.io/hashicorp/aws\"]",
+      "instances": [
+        {
+          "schema_version": 1,
+          "attributes": {
+            "ami": "ami-0b32d400456908bf9",
+            "arn": "arn:aws:ec2:ap-south-1:928096314836:instance/i-0600c75ebe51550e3",
+            "associate_public_ip_address": true,
+            "availability_zone": "ap-south-1a",
+            "capacity_reservation_specification": [
+              {
+                "capacity_reservation_preference": "open",
+                "capacity_reservation_target": []
+              }
+            ],
+            "cpu_core_count": 1,
+            "cpu_options": [
+              {
+                "amd_sev_snp": "",
+                "core_count": 1,
+                "threads_per_core": 1
+              }
+            ],
+            "cpu_threads_per_core": 1,
+            "credit_specification": [
+              {
+                "cpu_credits": "standard"
+              }
+            ],
+            "disable_api_stop": false,
+            "disable_api_termination": false,
+            "ebs_block_device": [],
+            "ebs_optimized": false,
+            "enable_primary_ipv6": null,
+            "enclave_options": [
+              {
+                "enabled": false
+              }
+            ],
+            "ephemeral_block_device": [],
+            "get_password_data": false,
+            "hibernation": false,
+            "host_id": "",
+            "host_resource_group_arn": null,
+            "iam_instance_profile": "devops-pipeline-project-codedeploy-ec2-instance-profile",
+            "id": "i-0600c75ebe51550e3",
+            "instance_initiated_shutdown_behavior": "stop",
+            "instance_lifecycle": "",
+            "instance_market_options": [],
+            "instance_state": "running",
+            "instance_type": "t2.micro",
+            "ipv6_address_count": 0,
+            "ipv6_addresses": [],
+            "key_name": "tftest",
+            "launch_template": [],
+            "maintenance_options": [
+              {
+                "auto_recovery": "default"
+              }
+            ],
+            "metadata_options": [
+              {
+                "http_endpoint": "enabled",
+                "http_protocol_ipv6": "disabled",
+                "http_put_response_hop_limit": 2,
+                "http_tokens": "required",
+                "instance_metadata_tags": "disabled"
+              }
+            ],
+            "monitoring": false,
+            "network_interface": [],
+            "outpost_arn": "",
+            "password_data": "",
+            "placement_group": "",
+            "placement_partition_number": 0,
+            "primary_network_interface_id": "eni-04697a41af96ce348",
+            "private_dns": "ip-10-0-1-87.ap-south-1.compute.internal",
+            "private_dns_name_options": [
+              {
+                "enable_resource_name_dns_a_record": false,
+                "enable_resource_name_dns_aaaa_record": false,
+                "hostname_type": "ip-name"
+              }
+            ],
+            "private_ip": "10.0.1.87",
+            "public_dns": "",
+            "public_ip": "3.109.139.165",
+            "root_block_device": [
+              {
+                "delete_on_termination": true,
+                "device_name": "/dev/xvda",
+                "encrypted": false,
+                "iops": 3000,
+                "kms_key_id": "",
+                "tags": {},
+                "tags_all": {},
+                "throughput": 125,
+                "volume_id": "vol-06174daa446e00ce1",
+                "volume_size": 8,
+                "volume_type": "gp3"
+              }
+            ],
+            "secondary_private_ips": [],
+            "security_groups": [],
+            "source_dest_check": true,
+            "spot_instance_request_id": "",
+            "subnet_id": "subnet-00800be7cda9813b8",
+            "tags": {
+              "App": "WebApp",
+              "Environment": "Dev",
+              "ManagedBy": "Terraform",
+              "Name": "devops-pipeline-project-app-server-managed-by-terraform",
+              "Project": "devops-pipeline-project"
+            },
+            "tags_all": {
+              "App": "WebApp",
+              "Environment": "Dev",
+              "ManagedBy": "Terraform",
+              "Name": "devops-pipeline-project-app-server-managed-by-terraform",
+              "Project": "devops-pipeline-project"
+            },
+            "tenancy": "default",
+            "timeouts": null,
+            "user_data": "340c2b1ad89585856d1191f35438dafee1e605db",
+            "user_data_base64": null,
+            "user_data_replace_on_change": false,
+            "volume_tags": null,
+            "vpc_security_group_ids": [
+              "sg-0c531e4e4ca06e664"
+            ]
+          },
+          "sensitive_attributes": [],
+          "private": "eyJlMmJmYjczMC1lY2FhLTExZTYtOGY4OC0zNDM2M2JjN2M0YzAiOnsiY3JlYXRlIjo2MDAwMDAwMDAwMDAsImRlbGV0ZSI6MTIwMDAwMDAwMDAwMCwicmVhZCI6OTAwMDAwMDAwMDAwLCJ1cGRhdGUiOjYwMDAwMDAwMDAwMH0sInNjaGVtYV92ZXJzaW9uIjoiMSJ9",
+          "dependencies": [
+            "aws_iam_instance_profile.codedeploy_ec2_instance_profile",
+            "aws_iam_role.codedeploy_ec2_role",
+            "aws_security_group.app_sg",
+            "data.aws_subnet.selected",
+            "data.aws_vpc.selected"
+          ]
+        }
+      ]
+    },
+    {
+      "mode": "managed",
+      "type": "aws_s3_bucket",
+      "name": "codepipeline_artifacts",
+      "provider": "provider[\"registry.terraform.io/hashicorp/aws\"]",
+      "instances": [
+        {
+          "schema_version": 0,
+          "attributes": {
+            "acceleration_status": "",
+            "acl": null,
+            "arn": "arn:aws:s3:::devops-codepipeline-artifacts-xumds51i",
+            "bucket": "devops-codepipeline-artifacts-xumds51i",
+            "bucket_domain_name": "devops-codepipeline-artifacts-xumds51i.s3.amazonaws.com",
+            "bucket_prefix": "",
+            "bucket_regional_domain_name": "devops-codepipeline-artifacts-xumds51i.s3.ap-south-1.amazonaws.com",
+            "cors_rule": [],
+            "force_destroy": false,
+            "grant": [
+              {
+                "id": "bbcaca088ae448ea6d2e05c7c2e0f2560da79ca52a69877e938d4c3393eb8a65",
+                "permissions": [
+                  "FULL_CONTROL"
+                ],
+                "type": "CanonicalUser",
+                "uri": ""
+              }
+            ],
+            "hosted_zone_id": "Z11RGJOFQNVJUP",
+            "id": "devops-codepipeline-artifacts-xumds51i",
+            "lifecycle_rule": [],
+            "logging": [],
+            "object_lock_configuration": [],
+            "object_lock_enabled": false,
+            "policy": "",
+            "region": "ap-south-1",
+            "replication_configuration": [],
+            "request_payer": "BucketOwner",
+            "server_side_encryption_configuration": [
+              {
+                "rule": [
+                  {
+                    "apply_server_side_encryption_by_default": [
+                      {
+                        "kms_master_key_id": "",
+                        "sse_algorithm": "AES256"
+                      }
+                    ],
+                    "bucket_key_enabled": false
+                  }
+                ]
+              }
+            ],
+            "tags": {
+              "ManagedBy": "Terraform",
+              "Project": "devops-pipeline-project"
+            },
+            "tags_all": {
+              "ManagedBy": "Terraform",
+              "Project": "devops-pipeline-project"
+            },
+            "timeouts": null,
+            "versioning": [
+              {
+                "enabled": true,
+                "mfa_delete": false
+              }
+            ],
+            "website": [],
+            "website_domain": null,
+            "website_endpoint": null
+          },
+          "sensitive_attributes": [],
+          "private": "eyJlMmJmYjczMC1lY2FhLTExZTYtOGY4OC0zNDM2M2JjN2M0YzAiOnsiY3JlYXRlIjoxMjAwMDAwMDAwMDAwLCJkZWxldGUiOjM2MDAwMDAwMDAwMDAsInJlYWQiOjEyMDAwMDAwMDAwMDAsInVwZGF0ZSI6MTIwMDAwMDAwMDAwMH19",
+          "dependencies": [
+            "random_string.bucket_suffix"
+          ]
+        }
+      ]
+    },
+    {
+      "mode": "managed",
+      "type": "aws_s3_bucket_versioning",
+      "name": "codepipeline_artifacts_versioning",
+      "provider": "provider[\"registry.terraform.io/hashicorp/aws\"]",
+      "instances": [
+        {
+          "schema_version": 0,
+          "attributes": {
+            "bucket": "devops-codepipeline-artifacts-xumds51i",
+            "expected_bucket_owner": "",
+            "id": "devops-codepipeline-artifacts-xumds51i",
+            "mfa": null,
+            "versioning_configuration": [
+              {
+                "mfa_delete": "",
+                "status": "Enabled"
+              }
+            ]
+          },
+          "sensitive_attributes": [],
+          "private": "bnVsbA==",
+          "dependencies": [
+            "aws_s3_bucket.codepipeline_artifacts",
+            "random_string.bucket_suffix"
+          ]
+        }
+      ]
+    },
+    {
+      "mode": "managed",
+      "type": "aws_security_group",
+      "name": "app_sg",
+      "provider": "provider[\"registry.terraform.io/hashicorp/aws\"]",
+      "instances": [
+        {
+          "schema_version": 1,
+          "attributes": {
+            "arn": "arn:aws:ec2:ap-south-1:928096314836:security-group/sg-0c531e4e4ca06e664",
+            "description": "Allow inbound traffic for web app and SSH",
+            "egress": [
+              {
+                "cidr_blocks": [
+                  "0.0.0.0/0"
+                ],
+                "description": "",
+                "from_port": 0,
+                "ipv6_cidr_blocks": [],
+                "prefix_list_ids": [],
+                "protocol": "-1",
+                "security_groups": [],
+                "self": false,
+                "to_port": 0
+              }
+            ],
+            "id": "sg-0c531e4e4ca06e664",
+            "ingress": [
+              {
+                "cidr_blocks": [
+                  "0.0.0.0/0"
+                ],
+                "description": "",
+                "from_port": 22,
+                "ipv6_cidr_blocks": [],
+                "prefix_list_ids": [],
+                "protocol": "tcp",
+                "security_groups": [],
+                "self": false,
+                "to_port": 22
+              },
+              {
+                "cidr_blocks": [
+                  "0.0.0.0/0"
+                ],
+                "description": "",
+                "from_port": 80,
+                "ipv6_cidr_blocks": [],
+                "prefix_list_ids": [],
+                "protocol": "tcp",
+                "security_groups": [],
+                "self": false,
+                "to_port": 80
+              }
+            ],
+            "name": "devops-pipeline-project-app-sg",
+            "name_prefix": "",
+            "owner_id": "928096314836",
+            "revoke_rules_on_delete": false,
+            "tags": {
+              "ManagedBy": "Terraform",
+              "Name": "devops-pipeline-project-app-sg",
+              "Project": "devops-pipeline-project"
+            },
+            "tags_all": {
+              "ManagedBy": "Terraform",
+              "Name": "devops-pipeline-project-app-sg",
+              "Project": "devops-pipeline-project"
+            },
+            "timeouts": null,
+            "vpc_id": "vpc-0056d65477e4e13e3"
+          },
+          "sensitive_attributes": [],
+          "private": "eyJlMmJmYjczMC1lY2FhLTExZTYtOGY4OC0zNDM2M2JjN2M0YzAiOnsiY3JlYXRlIjo2MDAwMDAwMDAwMDAsImRlbGV0ZSI6OTAwMDAwMDAwMDAwfSwic2NoZW1hX3ZlcnNpb24iOiIxIn0=",
+          "dependencies": [
+            "data.aws_vpc.selected"
+          ]
+        }
+      ]
+    },
+    {
+      "mode": "managed",
+      "type": "random_string",
+      "name": "bucket_suffix",
+      "provider": "provider[\"registry.terraform.io/hashicorp/random\"]",
+      "instances": [
+        {
+          "schema_version": 2,
+          "attributes": {
+            "id": "xumds51i",
+            "keepers": null,
+            "length": 8,
+            "lower": true,
+            "min_lower": 0,
+            "min_numeric": 0,
+            "min_special": 0,
+            "min_upper": 0,
+            "number": true,
+            "numeric": true,
+            "override_special": null,
+            "result": "xumds51i",
+            "special": false,
+            "upper": false
+          },
+          "sensitive_attributes": []
+        }
+      ]
+    }
+  ],
+  "check_results": null
+}
